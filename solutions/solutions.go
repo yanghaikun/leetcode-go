@@ -1,6 +1,7 @@
 package solutions
 import (
     "sort"
+    "strings"
 )
 
 //Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
@@ -62,3 +63,81 @@ func twoSum(nums []int, target int) []int {
     return result
  }
 
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+//2.addTwoNumbers
+//You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+//Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+//Output: 7 -> 0 -> 8
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+    var i, j, n int
+    var first, now *ListNode
+    for {
+        if (l1 == nil && l2 == nil && n == 0) {
+            break
+        }
+
+        if (l1 != nil) {
+            i = l1.Val
+            l1 = l1.Next
+        } else {
+            i = 0
+        }
+        if (l2 != nil) {
+            j = l2.Val
+            l2 = l2.Next
+        } else {
+            j = 0
+        }
+
+        temp := new(ListNode)
+        temp.Val = (i + j + n) % 10
+        n = (i + j + n) / 10
+
+        if (first == nil) {
+            first = temp
+            now = temp
+        } else {
+            now.Next = temp
+            now = temp
+        }
+    }
+
+    return first
+} 
+
+//3.lengthOfLongestSubstring
+/*  *Given a string, find the length of the longest substring without repeating characters.
+    *Examples:
+    *Given "abcabcbb", the answer is "abc", which the length is 3.
+    *Given "bbbbb", the answer is "b", with the length of 1.
+    *Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+*/
+func lengthOfLongestSubstring(s string) int {
+    var loc, offset, max int
+    var sub string = ""
+    for loc + offset < len(s) {
+        if strings.Contains(sub, s[(loc + offset):(loc + offset + 1)]) {
+            if len(sub) > max {
+                max = len(sub)
+            }
+            sub = sub[1:len(sub)]
+            loc++;
+            offset--;
+        } else {
+            offset++;
+            sub = s[loc:(loc + offset)]
+        }
+    }
+    if max < len(sub) {
+        max = len(sub)
+    }
+
+    return max
+}
