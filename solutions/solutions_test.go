@@ -4,13 +4,7 @@ import (
     "fmt"
 )
 
-func TestGetSum(t *testing.T) {
-    r := getSum(3, 5)
-    if r != 8 {
-        t.Errorf("getSum(3, 5) failed. Got %d, expected 8.", r)
-    }
-}
-
+//1
 func TestTwoSum(t *testing.T) {
     nums := []int{2, 7, 11, 15}
     target := 9
@@ -20,6 +14,7 @@ func TestTwoSum(t *testing.T) {
     }
 }
 
+//2
 func TestAddTwoNumbers(t *testing.T) {
     var toString = func (l *ListNode) string  {
         var s string = "["
@@ -65,6 +60,7 @@ func TestAddTwoNumbers(t *testing.T) {
     }
 }
 
+//3
 func TestLengthOfLongestSubstring(t *testing.T) {
     var s string
     var r int
@@ -86,3 +82,38 @@ func TestLengthOfLongestSubstring(t *testing.T) {
         t.Errorf("lengthOfLongestSubstring(ahcahcbb) failed. Got %d, Expected 2.", r)
     }
 }
+
+//4
+func TestFindMedianSortedArrays(t *testing.T) {
+    var nums1, nums2 []int
+    var r float64
+    nums1 = []int{1, 3}
+    nums2 = []int{2}
+    r = findMedianSortedArrays(nums1, nums2)
+    if r != 2.0 {
+        t.Errorf("findMedianSortedArrays({1,3}, {2}) failed. Got %f, expected 2.0.", r)
+    }
+
+    nums1 = []int{1, 2}
+    nums2 = []int{3, 4}
+    r = findMedianSortedArrays(nums1, nums2)
+    if r != 2.5 {
+        t.Errorf("findMedianSortedArrays({1, 2}, {3, 4}) failed. Got %f, expected 2.5.", r)
+    }
+
+    nums1 = []int{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22}
+    nums2 = []int{0,6}
+    r = findMedianSortedArrays(nums1, nums2)
+    if r != 10.5 {
+        t.Errorf("findMedianSortedArrays({1, 2}, {3, 4}) failed. Got %f, expected 10.5.", r)
+    }
+}
+
+//371
+func TestGetSum(t *testing.T) {
+    r := getSum(3, 5)
+    if r != 8 {
+        t.Errorf("getSum(3, 5) failed. Got %d, expected 8.", r)
+    }
+}
+
