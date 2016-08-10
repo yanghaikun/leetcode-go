@@ -140,10 +140,10 @@ func lengthOfLongestSubstring(s string) int {
 // The median is (2 + 3)/2 = 2.5
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	var l1, l2, l int
-    var result float64
-    var nums []int = make([]int, len(nums1) + len(nums2))
+	var result float64
+	var nums []int = make([]int, len(nums1)+len(nums2))
 
-	for l < len(nums1) + len(nums2) {
+	for l < len(nums1)+len(nums2) {
 		if l1 < len(nums1) && l2 < len(nums2) {
 			if nums1[l1] < nums2[l2] {
 				nums[l] = nums1[l1]
@@ -164,13 +164,13 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 		l++
 	}
 
-    if l % 2 == 1 {
-        result = float64(nums[l / 2])
-    } else {
-        result = float64(nums[l / 2 - 1] + nums[l / 2]) / 2
-    }
+	if l%2 == 1 {
+		result = float64(nums[l/2])
+	} else {
+		result = float64(nums[l/2-1]+nums[l/2]) / 2
+	}
 
-    return result
+	return result
 }
 
 //371. Sum of Two Integers
